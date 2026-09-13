@@ -5,7 +5,6 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   output: "export",
   basePath: "/monyul",
-  assetPrefix: "/monyul/",
   trailingSlash: true,
 };
 
