@@ -49,7 +49,7 @@ export default function ProfilePage() {
             }
 
             try {
-                const response = await fetch("http://localhost:3001/auth/me", {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -99,7 +99,7 @@ export default function ProfilePage() {
         setMessage("");
 
         try {
-            const response = await fetch("http://localhost:3001/auth/profile", {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/profile`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -177,7 +177,7 @@ export default function ProfilePage() {
         setPasswordSaving(true);
     
         try {
-            const response = await fetch("http://localhost:3001/auth/change-password", {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/change-password`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",

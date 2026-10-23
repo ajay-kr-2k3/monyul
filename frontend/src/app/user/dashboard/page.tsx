@@ -68,7 +68,7 @@ export default function UserDashboardPage() {
             }
     
             try {
-                const response = await fetch("http://localhost:3001/auth/me", {
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/me`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -276,7 +276,7 @@ export default function UserDashboardPage() {
                                 }
                             
                                 try {
-                                    const response = await fetch("http://localhost:3001/auth/profile", {
+                                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/profile`, {
                                         method: "PATCH",
                                         headers: {
                                             "Content-Type": "application/json",

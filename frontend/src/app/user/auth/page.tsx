@@ -23,7 +23,7 @@ export default function UserAuthPage() {
     setLoading(true);
   
     try {
-      const response = await fetch("http://localhost:3001/auth/signup", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -63,7 +63,7 @@ export default function UserAuthPage() {
     setLoading(true);
   
     try {
-      const response = await fetch("http://localhost:3001/auth/login", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
