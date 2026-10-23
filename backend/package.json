@@ -5,7 +5,6 @@
   "author": "",
   "private": true,
   "license": "UNLICENSED",
-  "type": "module",
   "scripts": {
     "build": "prisma migrate deploy && prisma generate && nest build",
     "deploy": "nest deploy",
