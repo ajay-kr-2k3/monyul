@@ -1,14 +1,15 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
 import NavBar from "./common/NavBar";
 import Footer from "./common/Footer";
 
 const services = [
-  { id: "hotel", icon: "🏨", title: "Hotel Booking", subtitle: "Find a place to stay" },
-  { id: "car-book", icon: "🚗", title: "Car Booking", subtitle: "Explore tawang" },
-  { id: "bike-rent", icon: "🏍️", title: "Bike Rent", subtitle: "Rent a bike" },
-  { id: "bike-ride", icon: "🛵", title: "Ride", subtitle: "Quick city rides" },
+  { id: "hotel", icon: "🏨", title: "Hotel Booking", subtitle: "Find a place to stay", route: "/user/auth" },
+  { id: "car-book", icon: "🚗", title: "Car Booking", subtitle: "Book a car for your journey", route: "/user/auth" },
+  { id: "bike-rent", icon: "🏍️", title: "Bike Rent", subtitle: "Rent a bike", route: "/user/auth" },
+  { id: "bike-ride", icon: "🛵", title: "Bike/Car Ride", subtitle: "Quick city rides", route: "/user/auth" },
 ];
 
 const destinations = [
@@ -30,6 +31,7 @@ export default function Home() {
   const [service, setService] = useState("hotel");
   const [destination, setDestination] = useState("");
   const [message, setMessage] = useState("");
+  const router = useRouter();
 
   const serviceLabel = useMemo(
     () => services.find((item) => item.id === service)?.title ?? "Hotel Booking",
@@ -48,11 +50,11 @@ export default function Home() {
 
       <section className="relative overflow-hidden bg-[#0e4d9f]">
         <div
-          className="absolute inset-0 bg-cover bg-center"
+          className="pointer-events-none absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: "url('/hero_image.png')" }}
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#031f46]/55 via-[#073f80]/50 to-[#073f80]/10" />
-        <div className="relative mx-auto max-w-[1240px] px-5 pb-20 pt-28 lg:px-8 lg:pb-28 lg:pt-24">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#031f46]/55 via-[#073f80]/50 to-[#073f80]/10" />
+        <div className="relative z-10 mx-auto max-w-[1240px] px-5 pb-20 pt-28 lg:px-1 lg:pb-28 lg:pt-28">
           <div className="max-w-[620px]">
             <p className="mb-3 whitespace-nowrap text-xs font-bold uppercase tracking-[0.12em] text-white/75 sm:text-sm sm:tracking-[0.18em]">One platform for every journey</p>
             <h1 className="mt-5 max-w-[650px] text-6xl font-black leading-[0.95] tracking-[-0.04em] text-white lg:text-[72px]">
@@ -66,12 +68,24 @@ export default function Home() {
           </div>
 
           <div className="mt-7 flex w-full justify-start">
-            <button className="flex h-[72px] w-[220px] lg:h-[100px] lg:w-[284px] flex-col items-center justify-center rounded-2xl border border-white/25 bg-white/[0.10] shadow-[0_15px_40px_rgba(0,0,0,0.18)] backdrop-blur-md hover hover:bg-white/20 hover:text-black">
-              <span className="text-[20px] lg:text-[25px] font-bold tracking-wide text-white">
-                Explore Tawang
-              </span>
+            <button type="button" onClick={() => router.push("/explore-tawang")} className="pointer-events-auto group flex h-[68px] w-[220px] items-center justify-between rounded-2xl border border-white/25 bg-[#0b2d55]/65 px-6 text-white shadow-[0_18px_45px_rgba(0,0,0,0.22)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:border-[#ffd21f]/60 hover:bg-[#0b2d55]/85 sm:h-[74px] sm:w-[245px] sm:px-7 lg:h-[82px] lg:w-[270px]">
+              <span className="whitespace-nowrap text-[19px] font-extrabold tracking-wide sm:text-[20px] lg:text-[22px]">Explore Tawang</span>
+              <span className="text-xl font-extrabold text-[#ffd21f] transition-transform duration-300 group-hover:translate-x-1">→</span>
             </button>
           </div> 
+
+          <div className="mt-5 flex w-full max-w-2xl flex-col gap-3 rounded-2xl border border-white/15 bg-black/20 p-3 backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:rounded-[22px] sm:p-4">
+            <div className="flex items-center gap-3">
+                <div>
+                    <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/60">Planning Arunachal?</p>
+                    <p className="mt-1 text-sm font-semibold text-white">Get your Tourist eILP before travelling</p>
+                </div>
+            </div>
+
+            <a href="https://www.eilp.arunachal.gov.in/preTuristEIlpKYC" target="_blank" rel="noopener noreferrer" className="inline-flex h-11 items-center justify-center gap-2 rounded-xl bg-white px-5 text-sm font-bold text-[#1769e0] shadow-lg transition hover:bg-[#1769e0] hover:text-white">
+                Apply for ILP <span>↗</span>
+            </a>
+          </div>
         </div>
       </section>
 

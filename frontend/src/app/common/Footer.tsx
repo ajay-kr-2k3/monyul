@@ -30,9 +30,9 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-bold uppercase tracking-wider text-white">Services</h3>
             <div className="mt-5 flex flex-col gap-3 text-sm text-white/55">
-              <Link href="/user/hotels" className={footerLink}>Hotels</Link>
-              <Link href="/user/bike-rent" className={footerLink}>Bike Rental</Link>
-              <Link href="/user/car-book" className={footerLink}>Car Rental</Link>
+              <Link href="/user/hotels" className={footerLink}>Hotel Booking</Link>
+              <Link href="/user/bike-rent" className={footerLink}>Car Booking</Link>
+              <Link href="/user/car-book" className={footerLink}>Bike Rental</Link>
               <Link href="/user/trips" className={footerLink}>Bike & Car Rides</Link>
             </div>
           </div>
